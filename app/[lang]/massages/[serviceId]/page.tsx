@@ -4,14 +4,27 @@ import { generateSEOMetadata } from '@/lib/seo/metadata';
 import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/seo/schemas';
 import { JsonLd } from '@/components/JsonLd';
 import { translations } from '@/lib/translations';
-import type { Lang, LangParams } from '../../layout';
 
 type ServiceKey = keyof (typeof translations)['en']['services']['items'];
 
+// Map SEO-friendly slugs → translation keys
+const SLUG_TO_KEY: Record<string, ServiceKey> = {
+  'botica-signature':    'botica',
+  'four-hands-massage':  'fourHands',
+  'deep-tissue-massage': 'deepTissue',
+  'relaxing-massage':    'relaxing',
+  'personalized-massage':'personalized',
+  'revitalizing-facial': 'facial',
+};
+
+function resolveKey(serviceId: string): ServiceKey {
+  return (SLUG_TO_KEY[serviceId] ?? serviceId) as ServiceKey;
+}
+
 export async function generateStaticParams() {
-  const serviceKeys = Object.keys(translations.en.services.items) as ServiceKey[];
+  const slugs = Object.keys(SLUG_TO_KEY);
   return ['en', 'es'].flatMap((lang) =>
-    serviceKeys.map((serviceId) => ({ lang, serviceId }))
+    slugs.map((serviceId) => ({ lang, serviceId }))
   );
 }
 
@@ -23,7 +36,7 @@ export async function generateMetadata({
   const { lang, serviceId } = await params;
   const isEs = lang === 'es';
   const t = translations[isEs ? 'es' : 'en'];
-  const service = t.services.items[serviceId as ServiceKey];
+  const service = t.services.items[resolveKey(serviceId)];
 
   if (!service) return {};
 
@@ -59,7 +72,7 @@ export default async function ServicePage({
   const { lang, serviceId } = await params;
   const isEs = lang === 'es';
   const t = translations[isEs ? 'es' : 'en'];
-  const service = t.services.items[serviceId as ServiceKey];
+  const service = t.services.items[resolveKey(serviceId)];
 
   if (!service) notFound();
 
