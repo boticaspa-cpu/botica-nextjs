@@ -12,12 +12,14 @@ import { cn } from '@/lib/utils';
 
 export const Navbar = () => {
   const { language, t } = useLanguage();
-  const pathname = usePathname();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const isHome = pathname === '/' || pathname === '/es' || pathname === '/es/';
+  const rawPathname = usePathname();
+  // Strip /en prefix added by next.config rewrites (usePathname returns the rewritten internal path)
+  const pathname = rawPathname.startsWith('/en') ? (rawPathname.slice(3) || '/') : rawPathname;
+  const isHome = rawPathname === '/en' || rawPathname === '/es' || rawPathname === '/es/';
   const isEs = language === 'es';
 
   // Compute alternate language path

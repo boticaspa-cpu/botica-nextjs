@@ -48,8 +48,8 @@ export async function generateMetadata({
 
   return generateSEOMetadata({
     title: isEs
-      ? `${service.name} a Domicilio | Playa del Carmen | Botica Spa`
-      : `${service.name} | In Home | Playa del Carmen | Botica Spa`,
+      ? `${service.name} a Domicilio | Playa del Carmen`
+      : `${service.name} | In Home | Playa del Carmen`,
     description: isEs
       ? `${service.desc} Desde $${minPrice.toLocaleString()} MXN. A domicilio en Playa del Carmen.`
       : `${service.desc} From $${minPrice.toLocaleString()} MXN. In-home in Playa del Carmen.`,

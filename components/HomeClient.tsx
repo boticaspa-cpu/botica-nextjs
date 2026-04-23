@@ -137,13 +137,13 @@ export function HomeClient() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
               {(language === 'en' ? [
-                { city: 'Playa del Carmen', note: 'Primary service area', fee: 'No travel fee', primary: true, slug: null },
+                { city: 'Playa del Carmen', note: 'Primary service area', fee: 'No travel fee', primary: true, slug: '/contact' },
                 { city: 'Playacar', note: 'Phase 1 & Phase 2', fee: 'No travel fee', primary: true, slug: '/massage-playacar' },
                 { city: 'Puerto Aventuras', note: 'South of Playa del Carmen', fee: 'Travel fee may apply', primary: false, slug: '/massage-puerto-aventuras' },
                 { city: 'Puerto Morelos', note: 'North of Playa del Carmen', fee: 'Travel fee applies', primary: false, slug: '/massage-puerto-morelos' },
                 { city: 'Akumal', note: 'Akumal Bay & surrounding', fee: 'Travel fee may apply', primary: false, slug: '/massage-akumal' },
               ] : [
-                { city: 'Playa del Carmen', note: 'Zona principal', fee: 'Sin cargo por traslado', primary: true, slug: null },
+                { city: 'Playa del Carmen', note: 'Zona principal', fee: 'Sin cargo por traslado', primary: true, slug: '/contact' },
                 { city: 'Playacar', note: 'Fase 1 y Fase 2', fee: 'Sin cargo por traslado', primary: true, slug: '/massage-playacar' },
                 { city: 'Puerto Aventuras', note: 'Al sur de Playa del Carmen', fee: 'Cargo por traslado posible', primary: false, slug: '/massage-puerto-aventuras' },
                 { city: 'Puerto Morelos', note: 'Al norte de Playa del Carmen', fee: 'Cargo por traslado', primary: false, slug: '/massage-puerto-morelos' },

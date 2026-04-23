@@ -33,8 +33,8 @@ export async function generateMetadata({
 
   return generateSEOMetadata({
     title: isEs
-      ? `Masaje a Domicilio en ${cityName} | Botica Spa`
-      : `In Home Massage in ${cityName} | Botica Spa`,
+      ? `Masaje a Domicilio en ${cityName}`
+      : `In Home Massage in ${cityName}`,
     description: isEs
       ? `Masajista profesional a domicilio en ${cityName}. Traslado: ${config.travelFee}. Masaje relajante, tejido profundo y más. Reserva por WhatsApp.`
       : `Professional in-home massage in ${cityName}. Travel fee: ${config.travelFee}. Relaxing, deep tissue and more. Book on WhatsApp.`,

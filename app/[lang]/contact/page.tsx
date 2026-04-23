@@ -15,8 +15,8 @@ export async function generateMetadata({
 
   return generateSEOMetadata({
     title: isEs
-      ? 'Contacto | Botica Spa — Masajes a Domicilio Playa del Carmen'
-      : 'Contact | Botica Spa — In Home Massage Playa del Carmen',
+      ? 'Contacto | Masajes a Domicilio Playa del Carmen'
+      : 'Contact | In Home Massage Playa del Carmen',
     description: isEs
       ? 'Contáctanos por WhatsApp para reservar tu masaje a domicilio en Playa del Carmen. Atención inmediata, respuesta en minutos.'
       : 'Contact us on WhatsApp to book your in-home massage in Playa del Carmen. Immediate attention, response within minutes.',

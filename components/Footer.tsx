@@ -53,8 +53,8 @@ export const Footer = () => {
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-500">© 2026 Botica Spa. {t.footer.rights}</p>
           <div className="flex gap-6 text-xs text-gray-500">
-            <a href="#" className="hover:text-black transition-colors">{t.footer.privacy}</a>
-            <a href="#" className="hover:text-black transition-colors">{t.footer.terms}</a>
+            <a href="mailto:boticaspa@gmail.com" className="hover:text-black transition-colors">{t.footer.privacy}</a>
+            <a href="mailto:boticaspa@gmail.com" className="hover:text-black transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </div>

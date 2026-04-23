@@ -32,7 +32,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return generateSEOMetadata({
-    title: `${post.title} | Botica Spa`,
+    title: post.title,
     description: post.excerpt,
     keywords: isEs
       ? 'masaje playa del carmen, spa domicilio, bienestar riviera maya'
