@@ -5,11 +5,11 @@ import { MessageCircle, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from './LanguageProvider';
 
 const AREAS = [
-  { name: 'Playa del Carmen', feeEn: 'No travel fee',       feeEs: 'Sin cargo de traslado', primary: true },
-  { name: 'Playacar',         feeEn: 'No travel fee',       feeEs: 'Sin cargo de traslado', primary: true },
-  { name: 'Puerto Aventuras', feeEn: 'Travel fee may apply',feeEs: 'Cargo de traslado posible', primary: false },
-  { name: 'Puerto Morelos',   feeEn: 'Travel fee applies',  feeEs: 'Cargo de traslado', primary: false },
-  { name: 'Akumal',           feeEn: 'Travel fee may apply',feeEs: 'Cargo de traslado posible', primary: false },
+  { name: 'Playa del Carmen', hasFee: false, primary: true },
+  { name: 'Playacar',         hasFee: false, primary: true },
+  { name: 'Puerto Aventuras', hasFee: true,  primary: false },
+  { name: 'Puerto Morelos',   hasFee: true,  primary: false },
+  { name: 'Akumal',           hasFee: true,  primary: false },
 ];
 
 export const ContactClient = () => {
@@ -81,9 +81,11 @@ export const ContactClient = () => {
             {AREAS.map(area => (
               <div key={area.name} className={`rounded-2xl p-5 border flex flex-col gap-1 ${area.primary ? 'bg-white border-[#D6CFBE]' : 'bg-[#F9F8F6] border-gray-100'}`}>
                 <span className="font-serif text-[#1A1A1A]">{area.name}</span>
-                <span className={`text-[10px] uppercase tracking-widest font-bold ${area.primary ? 'text-brand' : 'text-gray-400'}`}>
-                  {isEs ? area.feeEs : area.feeEn}
-                </span>
+                {area.hasFee && (
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400">
+                    {isEs ? 'Cargo de traslado' : 'Travel fee'}
+                  </span>
+                )}
               </div>
             ))}
           </div>
