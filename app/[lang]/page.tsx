@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { generateSEOMetadata } from '@/lib/seo/metadata';
 import { BOTICA_SPA_SCHEMA, generateFAQSchema } from '@/lib/seo/schemas';
 import { JsonLd } from '@/components/JsonLd';
-import { translations } from '@/lib/translations';
 import { FAQS_EN, FAQS_ES } from '@/data/faqs';
-import type { Lang, LangParams } from './layout';
+import { HomeClient } from '@/components/HomeClient';
+import type { LangParams } from './layout';
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 
@@ -41,7 +41,6 @@ export default async function HomePage({
 }) {
   const { lang } = await params;
   const isEs = lang === 'es';
-  const t = translations[isEs ? 'es' : 'en'];
 
   const faqs = isEs ? FAQS_ES : FAQS_EN;
   const faqSchema = generateFAQSchema(
@@ -52,23 +51,7 @@ export default async function HomePage({
     <>
       <JsonLd data={BOTICA_SPA_SCHEMA} />
       <JsonLd data={faqSchema} />
-
-      <main>
-        {/* Hero section placeholder — replace with your Hero component */}
-        <section className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-5xl font-bold mb-4">
-            {t.hero.title}{' '}
-            <em className="italic">{t.hero.titleItalic}</em>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">{t.hero.subtitle}</p>
-          <a
-            href="https://wa.me/529842687428"
-            className="mt-8 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
-          >
-            {t.hero.ctaBook}
-          </a>
-        </section>
-      </main>
+      <HomeClient />
     </>
   );
 }

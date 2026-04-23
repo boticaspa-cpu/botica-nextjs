@@ -1,0 +1,76 @@
+'use client';
+
+import { motion } from 'motion/react';
+import { useLanguage } from './LanguageProvider';
+
+export const About = () => {
+  const { t } = useLanguage();
+  return (
+    <section id="about" className="py-24 px-4 bg-[#F9F8F6]">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="/spa-interior.webp"
+              alt="In home massage session. Botica Spa therapist setting up at a Playa del Carmen villa"
+              width={800}
+              height={1000}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white rounded-3xl overflow-hidden shadow-xl hidden md:block">
+            <img
+              src="/spa-detalle.webp"
+              alt="Organic aromatherapy oils and botanical products used by Botica Spa"
+              width={192}
+              height={192}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Botica Spa logo" width={24} height={24} loading="lazy" decoding="async" className="w-6 h-6 object-contain" />
+            <span className="text-xs uppercase tracking-[0.4em] text-gray-500 block">{t.about.badge}</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
+            {t.about.title} <span className="italic">{t.about.titleItalic}</span>
+          </h2>
+          <p className="text-gray-600 leading-relaxed text-lg">{t.about.description}</p>
+          <div className="space-y-6">
+            {[
+              { num: '01', title: t.about.feature1Title, desc: t.about.feature1Desc },
+              { num: '02', title: t.about.feature2Title, desc: t.about.feature2Desc },
+              { num: '03', title: t.about.feature3Title, desc: t.about.feature3Desc },
+            ].map((f) => (
+              <div key={f.num} className="flex gap-4">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-brand/20">
+                  <span className="text-sm font-serif text-brand">{f.num}</span>
+                </div>
+                <div>
+                  <h3 className="font-medium mb-1">{f.title}</h3>
+                  <p className="text-sm text-gray-500">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};

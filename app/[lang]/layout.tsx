@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { LanguageProvider } from '@/components/LanguageProvider';
 
 export type Lang = 'en' | 'es';
 
@@ -37,5 +38,9 @@ export default async function LangLayout({
   params: Promise<LangParams>;
 }) {
   const { lang } = await params;
-  return <div lang={lang}>{children}</div>;
+  return (
+    <div lang={lang}>
+      <LanguageProvider>{children}</LanguageProvider>
+    </div>
+  );
 }

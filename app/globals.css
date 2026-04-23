@@ -1,26 +1,55 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* NimbusSanL — fuentes propias de Botica Spa */
+@font-face {
+  font-family: "NimbusSanL";
+  src: url("/fonts/NimbusSanL-Reg.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NimbusSanL";
+  src: url("/fonts/NimbusSanL-RegIta.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NimbusSanL";
+  src: url("/fonts/NimbusSanL-Bol.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NimbusSanL";
+  src: url("/fonts/NimbusSanL-BolIta.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "NimbusSanL", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --color-brand: #7C8363;
+  --color-brand-light: #9DA485;
+  --color-brand-dark: #5A5A40;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[#F9F8F6] text-[#1A1A1A] antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
