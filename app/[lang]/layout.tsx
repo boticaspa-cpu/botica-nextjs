@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { LanguageProvider } from '@/components/LanguageProvider';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 
 export type Lang = 'en' | 'es';
 
@@ -40,7 +42,11 @@ export default async function LangLayout({
   const { lang } = await params;
   return (
     <div lang={lang}>
-      <LanguageProvider>{children}</LanguageProvider>
+      <LanguageProvider>
+        <Navbar />
+        {children}
+        <Footer />
+      </LanguageProvider>
     </div>
   );
 }
