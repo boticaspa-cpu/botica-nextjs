@@ -14,6 +14,8 @@ const CITY_CONFIG: Record<CityKey, { nameEn: string; nameEs: string; travelFee: 
   'playacar': { nameEn: 'Playacar', nameEs: 'Playacar', travelFee: 'Free / Gratis' },
 };
 
+export const dynamic = 'force-dynamic';
+
 export function generateStaticParams() {
   const cities = Object.keys(CITY_CONFIG) as CityKey[];
   return ['en', 'es'].flatMap((lang) => cities.map((city) => ({ lang, city })));

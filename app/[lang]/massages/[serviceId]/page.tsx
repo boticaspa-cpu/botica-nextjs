@@ -7,6 +7,15 @@ import { translations } from '@/lib/translations';
 
 type ServiceKey = keyof (typeof translations)['en']['services']['items'];
 
+const SLUG_TO_IMAGE: Record<string, string> = {
+  'botica-signature':    '/masaje-botica.webp',
+  'four-hands-massage':  '/masaje-cuatro-manos.webp',
+  'deep-tissue-massage': '/masaje-profundo.webp',
+  'relaxing-massage':    '/masaje-relajante.webp',
+  'personalized-massage':'/spa-detalle.webp',
+  'revitalizing-facial': '/masaje-cuatro-manos.webp',
+};
+
 // Map SEO-friendly slugs → translation keys
 const SLUG_TO_KEY: Record<string, ServiceKey> = {
   'botica-signature':    'botica',
@@ -110,6 +119,11 @@ export default async function ServicePage({
       <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbs} />
       <main className="max-w-3xl mx-auto px-4 py-20">
+        {SLUG_TO_IMAGE[serviceId] && (
+          <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-10">
+            <img src={SLUG_TO_IMAGE[serviceId]} alt={service.name} className="w-full h-full object-cover" />
+          </div>
+        )}
         <h1 className="text-4xl font-bold mb-4">{service.name}</h1>
         <p className="text-xl text-gray-600 mb-8">{service.desc}</p>
 
