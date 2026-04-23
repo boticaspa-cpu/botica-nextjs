@@ -20,6 +20,10 @@ function buildAlternates(pathname: string) {
   };
 }
 
+export function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'es' }];
+}
+
 export async function generateMetadata({
   params,
 }: {
