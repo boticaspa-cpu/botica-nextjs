@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { generateSEOMetadata } from '@/lib/seo/metadata';
 import { generateLocalBusinessSchema } from '@/lib/seo/schemas';
 import { JsonLd } from '@/components/JsonLd';
-import type { Lang, LangParams } from '../layout';
+import { LocationClient } from '@/components/LocationClient';
 
 type CityKey = 'puerto-aventuras' | 'puerto-morelos' | 'akumal' | 'playacar';
 
@@ -81,25 +81,7 @@ export default async function LocationPage({
   return (
     <>
       <JsonLd data={citySchema} />
-      <main className="max-w-3xl mx-auto px-4 py-20">
-        <h1 className="text-4xl font-bold mb-4">
-          {isEs
-            ? `Masaje a Domicilio en ${cityName}`
-            : `In Home Massage in ${cityName}`}
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          {isEs
-            ? `Llevamos terapistas certificadas directamente a tu hotel, villa o Airbnb en ${cityName}. Traslado desde Playa del Carmen: ${config.travelFee}.`
-            : `We bring certified therapists directly to your hotel, villa, or Airbnb in ${cityName}. Travel fee from Playa del Carmen: ${config.travelFee}.`}
-        </p>
-
-        <a
-          href="https://wa.me/529842687428"
-          className="inline-block px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
-        >
-          {isEs ? 'Reservar por WhatsApp' : 'Book on WhatsApp'}
-        </a>
-      </main>
+      <LocationClient city={city} />
     </>
   );
 }
